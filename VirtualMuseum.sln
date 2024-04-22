@@ -7,6 +7,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMuseum.Api", "VirtualMuseum.Api\VirtualMuseum.Api.csproj", "{FC35E0CA-5C05-4A10-A446-BDEEA51B07E6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1EDDF0DB-FCD3-4058-A12C-76B1071BCBFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMuseum.DAL", "VirtualMuseum.DAL\VirtualMuseum.DAL.csproj", "{2DEFA2B8-1824-4950-AFF1-670F9CC7EB4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4208EA43-3240-452B-953D-883EA4DE491C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMuseum.Domain", "VirtualMuseum.Domain\VirtualMuseum.Domain.csproj", "{23D307EA-FA7F-44B1-9BAF-1602F8964F5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMuseum.Application", "VirtualMuseum.Application\VirtualMuseum.Application.csproj", "{246898F3-CA46-4371-AA3B-7425B590B901}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +27,27 @@ Global
 		{FC35E0CA-5C05-4A10-A446-BDEEA51B07E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC35E0CA-5C05-4A10-A446-BDEEA51B07E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC35E0CA-5C05-4A10-A446-BDEEA51B07E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DEFA2B8-1824-4950-AFF1-670F9CC7EB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DEFA2B8-1824-4950-AFF1-670F9CC7EB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DEFA2B8-1824-4950-AFF1-670F9CC7EB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DEFA2B8-1824-4950-AFF1-670F9CC7EB4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D307EA-FA7F-44B1-9BAF-1602F8964F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D307EA-FA7F-44B1-9BAF-1602F8964F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D307EA-FA7F-44B1-9BAF-1602F8964F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D307EA-FA7F-44B1-9BAF-1602F8964F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246898F3-CA46-4371-AA3B-7425B590B901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246898F3-CA46-4371-AA3B-7425B590B901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246898F3-CA46-4371-AA3B-7425B590B901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246898F3-CA46-4371-AA3B-7425B590B901}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FC35E0CA-5C05-4A10-A446-BDEEA51B07E6} = {19BDDF8A-A9DE-4A64-967F-4B40CBCB0179}
+		{2DEFA2B8-1824-4950-AFF1-670F9CC7EB4A} = {1EDDF0DB-FCD3-4058-A12C-76B1071BCBFC}
+		{23D307EA-FA7F-44B1-9BAF-1602F8964F5C} = {4208EA43-3240-452B-953D-883EA4DE491C}
+		{246898F3-CA46-4371-AA3B-7425B590B901} = {4208EA43-3240-452B-953D-883EA4DE491C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {59F28F0F-1ECD-481B-9AE8-38583161F8EE}
