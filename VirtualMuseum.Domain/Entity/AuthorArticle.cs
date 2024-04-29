@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using VirtualMuseum.Domain.Interfaces;
 
 namespace VirtualMuseum.Domain.Entity;
@@ -16,14 +17,14 @@ public class AuthorArticle : IBaseEntity<int>
     /// Id автора.
     /// </summary>
     public int? AuthorId { get; set; }
+    
+    /// <summary>
+    /// Статья.
+    /// </summary>
+    public Article? Article { get; set; }
 
     /// <summary>
-    /// Должность.
+    /// Id статьи.
     /// </summary>
-    public Position? Position { get; set; }
-
-    /// <summary>
-    /// Id должности.
-    /// </summary>
-    public int? PositionId { get; set; }
+    public int? ArticleId { get; set; }
 }

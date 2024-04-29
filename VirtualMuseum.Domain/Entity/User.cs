@@ -19,7 +19,7 @@ public class User : IBaseEntity<int>
     /// <summary>
     /// Отчество.
     /// </summary>
-    public string Secondname { get; set; }
+    public string? Secondname { get; set; }
 
     /// <summary>
     /// Фамилия.

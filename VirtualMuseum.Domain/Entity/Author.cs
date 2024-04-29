@@ -19,12 +19,17 @@ public class Author : IBaseEntity<int>
     /// <summary>
     /// Отчество.
     /// </summary>
-    public string Secondname { get; set; }
+    public string? Secondname { get; set; }
 
     /// <summary>
     /// Фамилия.
     /// </summary>
     public string Lastname { get; set; }
+
+    /// <summary>
+    /// Список статей автора.
+    /// </summary>
+    public List<AuthorArticle>? AuthorArticles { get; set; }
 
     /// <summary>
     ///  Список должностей автора.

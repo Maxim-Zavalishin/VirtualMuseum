@@ -14,4 +14,10 @@ public class Role : IBaseEntity<int>
     /// Название роли.
     /// </summary>
     public string Name { get; set; }
+
+    /// <summary>
+    /// Список пользователей.
+    /// </summary>
+    public List<User> Users { get; set; }
+    
 }
