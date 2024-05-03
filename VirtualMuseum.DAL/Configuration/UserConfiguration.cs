@@ -27,5 +27,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .WithMany(r => r.Users)
             .HasPrincipalKey(r => r.Id)
             .HasForeignKey(u => u.RoleId);
+
+        builder.HasOne<UserToken>(u => u.UserToken)
+            .WithOne(u => u.User);
     }
 }

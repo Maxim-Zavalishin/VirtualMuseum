@@ -60,4 +60,14 @@ public class User : IBaseEntity<int>
     /// Список отзывов пользователя.
     /// </summary>
     public List<Feedback>? Feedbacks { get; set; }
+
+    /// <summary>
+    /// Токен.
+    /// </summary>
+    public UserToken UserToken { get; set; }
+
+    /// <summary>
+    /// Id токена.
+    /// </summary>
+    public int UserTokenId { get; set; }
 }
