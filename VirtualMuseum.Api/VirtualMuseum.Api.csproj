@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\VirtualMuseum.Application\VirtualMuseum.Application.csproj" />
+    <ProjectReference Include="..\VirtualMuseum.DAL\VirtualMuseum.DAL.csproj" />
   </ItemGroup>
 
 </Project>
