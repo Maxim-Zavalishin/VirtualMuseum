@@ -2,7 +2,7 @@ using VirtualMuseum.Domain.Interfaces;
 
 namespace VirtualMuseum.DAL.Repositories;
 
-public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+public  class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
 {
     private readonly ApplicationDbContext _context;
 
