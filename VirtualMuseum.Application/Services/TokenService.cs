@@ -5,12 +5,12 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using VirtualMuseum.Application.Resources;
 using VirtualMuseum.Domain.Dto.UserToken;
 using VirtualMuseum.Domain.Entity;
 using VirtualMuseum.Domain.Enum;
 using VirtualMuseum.Domain.Interfaces;
 using VirtualMuseum.Domain.Interfaces.Services;
-using VirtualMuseum.Domain.Resources;
 using VirtualMuseum.Domain.Result;
 using VirtualMuseum.Domain.Settings;
 

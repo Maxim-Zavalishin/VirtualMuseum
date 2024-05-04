@@ -2,13 +2,13 @@ using System.Security.Claims;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using VirtualMuseum.Application.Helpers;
+using VirtualMuseum.Application.Resources;
 using VirtualMuseum.Domain.Dto.User;
 using VirtualMuseum.Domain.Dto.UserToken;
 using VirtualMuseum.Domain.Entity;
 using VirtualMuseum.Domain.Enum;
 using VirtualMuseum.Domain.Interfaces;
 using VirtualMuseum.Domain.Interfaces.Services;
-using VirtualMuseum.Domain.Resources;
 using VirtualMuseum.Domain.Result;
 
 namespace VirtualMuseum.Application.Services;
