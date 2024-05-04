@@ -64,6 +64,11 @@ public static class Startup
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true
                 };
-            });
+            }
+        );
+        
+        builder.Services
+            .Configure<JwtSettings>(builder.Configuration
+                .GetSection(JwtSettings.DefaultSections));
     }
 }

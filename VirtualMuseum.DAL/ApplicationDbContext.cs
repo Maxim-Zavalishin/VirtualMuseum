@@ -3,12 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace VirtualMuseum.DAL;
 
-public class ApplicationDbContext : DbContext
+public sealed class ApplicationDbContext : DbContext
 {
-    public ApplicationDbContext()
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
+        //Database.EnsureDeleted();
         Database.EnsureCreated();
     }
+    
+    
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

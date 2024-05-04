@@ -29,6 +29,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasForeignKey(u => u.RoleId);
 
         builder.HasOne<UserToken>(u => u.UserToken)
-            .WithOne(u => u.User);
+            .WithOne(ut => ut.User)
+            .HasForeignKey<UserToken>(ut => ut.UserId);
     }
 }

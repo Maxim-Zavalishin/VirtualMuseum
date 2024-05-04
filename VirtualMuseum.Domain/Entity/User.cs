@@ -64,10 +64,5 @@ public class User : IBaseEntity<int>
     /// <summary>
     /// Токен.
     /// </summary>
-    public UserToken UserToken { get; set; }
-
-    /// <summary>
-    /// Id токена.
-    /// </summary>
-    public int UserTokenId { get; set; }
+    public UserToken? UserToken { get; set; }
 }

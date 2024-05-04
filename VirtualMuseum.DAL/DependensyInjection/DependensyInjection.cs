@@ -15,6 +15,8 @@ public static class DependensyInjection
                 options.UseSqlServer(configuration.GetConnectionString("MSSQL")),
             ServiceLifetime.Transient
         );
+
+        services.InitRepositories();
     }
 
     public static void InitRepositories(this IServiceCollection services)
@@ -29,5 +31,6 @@ public static class DependensyInjection
         services.AddScoped<IBaseRepository<SubTopic>, BaseRepository<SubTopic>>();
         services.AddScoped<IBaseRepository<Topic>, BaseRepository<Topic>>();
         services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
+        services.AddScoped<IBaseRepository<UserToken>, BaseRepository<UserToken>>();
     }
 }

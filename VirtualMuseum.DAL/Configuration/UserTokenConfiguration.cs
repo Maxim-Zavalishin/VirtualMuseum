@@ -10,10 +10,11 @@ public class UserTokenConfiguration : IEntityTypeConfiguration<UserToken>
     {
         builder.HasKey(u => u.Id);
         builder.Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Property(u => u.RefreshToken).IsRequired().HasColumnType("varchar");
+        builder.Property(u => u.RefreshToken).IsRequired().HasColumnType("varchar(255)");
         builder.Property(u => u.RefreshTokenExpiryTime).IsRequired().HasColumnType("datetime");
 
-        builder.HasOne(u => u.User)
-            .WithOne(u => u.UserToken);
+        builder.HasOne(ut => ut.User)
+            .WithOne(u => u.UserToken)
+            .HasForeignKey<UserToken>(ut => ut.UserId);;
     }
 }

@@ -16,5 +16,19 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
             .WithOne(u => u.Role)
             .HasPrincipalKey(r => r.Id)
             .HasForeignKey(u => u.RoleId);
+        
+        builder.HasData(new List<Role>()
+        {
+            new Role()
+            {
+                Id = 1,
+                Name = "Пользователь"
+            },
+            new Role()
+            {
+                Id = 2,
+                Name = "Администратор"
+            }
+        });
     }
 }
