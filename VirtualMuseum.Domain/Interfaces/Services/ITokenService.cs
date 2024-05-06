@@ -4,7 +4,7 @@ using VirtualMuseum.Domain.Result;
 
 namespace VirtualMuseum.Domain.Interfaces.Services;
 
-public interface ITokenServices
+public interface ITokenService
 {
     string GenerateAccessToken(IEnumerable<Claim> claims);
     

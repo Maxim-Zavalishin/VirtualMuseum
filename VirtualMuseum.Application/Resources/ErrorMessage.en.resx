@@ -29,4 +29,10 @@
     <data name="InvalidPassword" xml:space="preserve">
         <value>Invalid password</value>
     </data>
+    <data name="ArticleNotFount" xml:space="preserve">
+        <value>Article not fount</value>
+    </data>
+    <data name="AutorNotFount" xml:space="preserve">
+        <value>Autor not fount</value>
+    </data>
 </root>

@@ -36,4 +36,10 @@
     <data name="InvalidPassword" xml:space="preserve">
         <value>Неверный пароль</value>
     </data>
+    <data name="ArticleNotFount" xml:space="preserve">
+        <value>Статья не найдена</value>
+    </data>
+    <data name="AutorNotFount" xml:space="preserve">
+        <value>Автор не найден</value>
+    </data>
 </root>

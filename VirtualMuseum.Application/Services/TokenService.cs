@@ -16,7 +16,7 @@ using VirtualMuseum.Domain.Settings;
 
 namespace VirtualMuseum.Application.Services;
 
-public class TokenService : ITokenServices
+public class TokenService : ITokenService
 {
     private readonly IBaseRepository<User> _userRepository;
     // private readonly ILogger _logger;

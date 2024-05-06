@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using VirtualMuseum.Application.AutoMapper.ArticleMappers;
 using VirtualMuseum.Application.AutoMapper.UserMapper;
 using VirtualMuseum.Application.Services;
 using VirtualMuseum.Domain.Interfaces.Services;
@@ -17,11 +18,13 @@ public static class DependensyInjection
     {
         services.AddAutoMapper(typeof(UserMapper));
         services.AddAutoMapper(typeof(UserRegisterMapper));
+        services.AddAutoMapper(typeof(GetArticleMapper));
     }
 
     private static void InitServices(this IServiceCollection services)
     {
-        services.AddTransient<IAuthServices, AuthService>();
-        services.AddTransient<ITokenServices, TokenService>();
+        services.AddTransient<IAuthService, AuthService>();
+        services.AddTransient<ITokenService, TokenService>();
+        services.AddTransient<IArticleService, ArticleServices>();
     }
 }

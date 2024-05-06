@@ -10,9 +10,9 @@ namespace VirtualMuseum.Api.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly IAuthServices _authService;
+    private readonly IAuthService _authService;
 
-    public AuthController(IAuthServices authService)
+    public AuthController(IAuthService authService)
     {
         _authService = authService;
     }

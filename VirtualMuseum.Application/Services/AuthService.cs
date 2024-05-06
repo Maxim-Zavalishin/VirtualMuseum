@@ -14,18 +14,18 @@ using VirtualMuseum.Domain.Result;
 namespace VirtualMuseum.Application.Services;
 
 /// <inheritdoc />
-public class AuthService : IAuthServices
+public class AuthService : IAuthService
 {
     private readonly IBaseRepository<User> _userRepository;
     private readonly IBaseRepository<UserToken> _userTokenRepository;
     private readonly IBaseRepository<Role> _roleRepository;
-    private readonly ITokenServices _tokenService;
+    private readonly ITokenService _tokenService;
     private readonly IMapper _mapper;
 
     public AuthService(
         IBaseRepository<User> userRepository, 
         IBaseRepository<UserToken> userTokenRepository, 
-        ITokenServices tokenService, IMapper mapper, IBaseRepository<Role> roleRepository)
+        ITokenService tokenService, IMapper mapper, IBaseRepository<Role> roleRepository)
     {
         _userRepository = userRepository;
         _userTokenRepository = userTokenRepository;

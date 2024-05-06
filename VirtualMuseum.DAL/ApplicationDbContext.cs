@@ -11,8 +11,6 @@ public sealed class ApplicationDbContext : DbContext
         Database.EnsureCreated();
     }
     
-    
-    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

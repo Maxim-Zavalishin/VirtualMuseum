@@ -4,12 +4,14 @@ public enum ErrorCode
 {
     InternalServerError = 1,
     
+    ArticleNotFount = 11,
     
+    AuthorNotFount = 21,
     
-    InvalidUserRequest = 101,
-    UserAlreadyExists = 102, 
-    UserNotFount = 103,
-    InvalidPassword = 104, 
+    InvalidUserRequest = 111,
+    UserAlreadyExists = 112, 
+    UserNotFount = 113,
+    InvalidPassword = 114, 
     
-    InvalidToken = 111,
+    InvalidToken = 121,
 }

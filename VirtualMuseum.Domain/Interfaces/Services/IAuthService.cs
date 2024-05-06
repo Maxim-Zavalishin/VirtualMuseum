@@ -7,7 +7,7 @@ namespace VirtualMuseum.Domain.Interfaces.Services;
 /// <summary>
 /// Сервис для регистрации/авторизации пользователей.
 /// </summary>
-public interface IAuthServices
+public interface IAuthService
 {
     /// <summary>
     /// Регистрация пользователя.
