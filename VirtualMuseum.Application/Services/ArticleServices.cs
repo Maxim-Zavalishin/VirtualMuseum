@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using VirtualMuseum.Application.Resources;
 using VirtualMuseum.Domain.Dto.Article;
 using VirtualMuseum.Domain.Dto.Author;
+using VirtualMuseum.Domain.Dto.Feedbacks;
+using VirtualMuseum.Domain.Dto.User;
 using VirtualMuseum.Domain.Entity;
 using VirtualMuseum.Domain.Enum;
 using VirtualMuseum.Domain.Interfaces;
@@ -17,62 +19,110 @@ public class ArticleServices : IArticleService
     private readonly IBaseRepository<Article> _articleRepository;
     private readonly IBaseRepository<AuthorArticle> _authorArticleRepository;
     private readonly IBaseRepository<Author> _authorRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public ArticleServices(IBaseRepository<Article> articleRepository, IBaseRepository<AuthorArticle> authorArticleRepository, IMapper mapper, IBaseRepository<Author> authorRepository)
+    public ArticleServices(IBaseRepository<Article> articleRepository, IBaseRepository<AuthorArticle> authorArticleRepository, IMapper mapper, IBaseRepository<Author> authorRepository, IUnitOfWork unitOfWork)
     {
         _articleRepository = articleRepository;
         _authorArticleRepository = authorArticleRepository;
         _mapper = mapper;
         _authorRepository = authorRepository;
+        _unitOfWork = unitOfWork;
     }
-
-    public Task<CollectionResult<ArticleDto>> GetArticlesAsync()
-    {
-        throw new NotImplementedException();
-    }
-
+    
     public async Task<CollectionResult<GetArticleDto>> GetIdArticlesAsync()
     {
         try
         {
-            
-            // var articlesWithAuthors = await _articleRepository
-            //     .GetAll()
-            //     .Select(article => new GetArticleDto(
-            //         article.Name,
-            //         article.Keywords,
-            //         article.AuthorArticles.Select(authorArticle => $"{authorArticle.Author.Firstname} {authorArticle.Author.Lastname}").ToList()
-            //     ))
-            //     .ToListAsync();
-            
-            var articlesWithAuthors = await _articleRepository
+            var articles = await _articleRepository
                 .GetAll()
                 .Select(article => new GetArticleDto(
                     article.Name,
                     article.Keywords,
                     article.AuthorArticles
                         .Where(authorArticle => authorArticle.Author != null)
-                        .Select(authorArticle => $"{authorArticle.Author.Firstname} {authorArticle.Author.Lastname}")
+                        .Select(authorArticle => new AuthorNameDto(
+                            authorArticle.Author.Id,
+                            authorArticle.Author.Firstname,
+                            authorArticle.Author.Lastname
+                            ))
                         .ToList()
                 ))
                 .ToListAsync();
-            
+
+            if (articles == null)
+            {
+                return new CollectionResult<GetArticleDto>()
+                {
+                    ErrorMassage = ErrorMessage.ArticleNotFount,
+                    ErrorCode = (int)ErrorCode.ArticleNotFount
+                };
+            }
+
             return new CollectionResult<GetArticleDto>()
             {
-                Data = articlesWithAuthors
+                Data = articles
             };
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            return new CollectionResult<GetArticleDto>()
+            {
+                ErrorCode = (int)ErrorCode.InternalServerError,
+                ErrorMassage = ErrorMessage.InternalServerError
+            };
         }
     }
 
-    public Task<BaseResult<ArticleDto>> GetIArticleByIdAsync(int id)
+    public async Task<BaseResult<ArticleDto>> GetArticleByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var article = await _articleRepository
+                .GetAll()
+                .FirstOrDefaultAsync(article => article.Id == id);
+
+            var articleDto = new ArticleDto(
+                article.Name,
+                article.Text,
+                article.Keywords,
+                article.SubTopic.Name,
+                article.AuthorArticles
+                    .Where(authorArticle => authorArticle.Author != null)
+                    .Select(authorArticle => new AuthorNameDto(
+                        authorArticle.Author.Id,
+                        authorArticle.Author.Firstname,
+                        authorArticle.Author.Lastname
+                    )).ToList(),
+                article.Feedbacks
+                    .Where(feedback => feedback != null)
+                    .Where(feedback => feedback.User != null)
+                    .Select(feedback => new FeedbackDto(
+                        feedback.Text,
+                        feedback.CreatedAt,
+                        new UserFeedbackDto(
+                            feedback.User.Firstname,
+                            feedback.User.Lastname,
+                            feedback.User.Login
+                        )
+                    )).ToList()
+            );
+
+            return new BaseResult<ArticleDto>()
+            {
+                Data = articleDto
+            };
+
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<ArticleDto>()
+            {
+                ErrorCode = (int)ErrorCode.InternalServerError,
+                ErrorMassage = ErrorMessage.InternalServerError
+            };
+        }
     }
 
     public Task<BaseResult<ArticleDto>> CreateArticleAsync(CreateArticleDto dto)

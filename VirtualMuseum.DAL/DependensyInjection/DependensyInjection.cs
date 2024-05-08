@@ -21,6 +21,7 @@ public static class DependensyInjection
 
     public static void InitRepositories(this IServiceCollection services)
     {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IBaseRepository<Article>, BaseRepository<Article>>();
         services.AddScoped<IBaseRepository<Author>, BaseRepository<Author>>();
         services.AddScoped<IBaseRepository<AuthorArticle>, BaseRepository<AuthorArticle>>();

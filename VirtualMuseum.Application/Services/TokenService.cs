@@ -112,7 +112,8 @@ public class TokenService : ITokenService
             var refreshToken = GenerateRefreshToken();
 
             user.UserToken.RefreshToken = refreshToken;
-            await _userRepository.UpdateAsync(user);
+            _userRepository.Update(user);
+            await _userRepository.SaveChangesAsync();
 
             return new BaseResult<TokenDto>()
             {

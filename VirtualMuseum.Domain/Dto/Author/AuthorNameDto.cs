@@ -1,5 +1,7 @@
 namespace VirtualMuseum.Domain.Dto.Author;
 
 public record AuthorNameDto(
-    string FullName
+    int Id,
+    string Firstname,
+    string Lastname
 );

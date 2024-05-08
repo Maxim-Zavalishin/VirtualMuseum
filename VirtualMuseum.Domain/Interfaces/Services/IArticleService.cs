@@ -6,12 +6,6 @@ namespace VirtualMuseum.Domain.Interfaces.Services;
 public interface IArticleService
 {
     /// <summary>
-    /// Получение всех статей.
-    /// </summary>
-    /// <returns> Массив статей. </returns>
-    Task<CollectionResult<ArticleDto>> GetArticlesAsync();
-    
-    /// <summary>
     /// Получение всех Id статей.
     /// </summary>
     /// <returns> Массив статей. </returns>
@@ -22,7 +16,7 @@ public interface IArticleService
     /// </summary>
     /// <param name="id"> id конкретной статьи. </param>
     /// <returns> Конкретная статья. </returns>
-    Task<BaseResult<ArticleDto>> GetIArticleByIdAsync(int id);
+    Task<BaseResult<ArticleDto>> GetArticleByIdAsync(int id);
 
     /// <summary>
     /// Создание новой статьи.

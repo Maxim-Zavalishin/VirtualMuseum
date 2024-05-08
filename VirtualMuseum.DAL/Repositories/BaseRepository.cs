@@ -25,14 +25,14 @@ public  class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity :
             throw new ArgumentNullException("entity", "Параметр \"Entity\" пуст");
         }
 
-        _context.Add(entity);
+        await _context.AddAsync(entity);
         await _context.SaveChangesAsync();
 
         return await Task.FromResult(entity);
     }
 
     /// <inheritdoc />
-    public async Task<TEntity> UpdateAsync(TEntity entity)
+    public TEntity Update(TEntity entity)
     {
         if (entity == null)
         {
@@ -40,13 +40,12 @@ public  class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity :
         }
 
         _context.Update(entity);
-        await _context.SaveChangesAsync();
 
-        return await Task.FromResult(entity);
+        return entity;
     }
 
     /// <inheritdoc />
-    public async Task<TEntity> RemoveAsync(TEntity entity)
+    public TEntity Remove(TEntity entity)
     {
         if (entity == null)
         {
@@ -54,8 +53,12 @@ public  class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity :
         }
 
         _context.Remove(entity);
-        await _context.SaveChangesAsync();
+        
+        return entity;
+    }
 
-        return await Task.FromResult(entity);
+    public async Task SaveChangesAsync()
+    {
+        await _context.SaveChangesAsync();
     }
 }

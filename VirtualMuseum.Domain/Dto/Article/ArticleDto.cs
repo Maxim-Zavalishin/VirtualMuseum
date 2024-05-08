@@ -1,4 +1,6 @@
-using VirtualMuseum.Domain.Entity;
+using VirtualMuseum.Domain.Dto.Author;
+using VirtualMuseum.Domain.Dto.Feedbacks;
+using VirtualMuseum.Domain.Dto.Roles;
 
 namespace VirtualMuseum.Domain.Dto.Article;
 
@@ -7,6 +9,6 @@ public record ArticleDto(
     string Text,
     string Keywords,
     string SubTopic,
-    List<AuthorArticle> Authors,
-    List<Feedback> Feedbacks
+    List<AuthorNameDto> Authors,
+    List<FeedbackDto> Feedbacks
     );

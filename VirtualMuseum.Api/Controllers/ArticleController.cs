@@ -18,9 +18,20 @@ public class ArticleController : ControllerBase
     
     
     [HttpGet]
-    public async Task<ActionResult<CollectionResult<GetArticleDto>>> GetIdArticle()
+    public async Task<ActionResult<CollectionResult<GetArticleDto>>> GetArticle()
     {
         var response = await _articleService.GetIdArticlesAsync();
+        if (response.IsSuccess)
+        {
+            return Ok(response);
+        }
+        return BadRequest(response);
+    }
+
+    public async Task<ActionResult<CollectionResult<ArticleDto>>> GetArticleById(int id)
+    {
+        var response = await _articleService.GetArticleByIdAsync(id);
+
         if (response.IsSuccess)
         {
             return Ok(response);

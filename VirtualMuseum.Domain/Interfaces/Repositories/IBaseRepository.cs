@@ -20,12 +20,17 @@ public interface IBaseRepository<TEntity>
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    Task<TEntity> UpdateAsync(TEntity entity);
+    TEntity Update(TEntity entity);
 
     /// <summary>
     /// Удаление существующей записи.
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    Task<TEntity> RemoveAsync(TEntity entity);
+    TEntity Remove(TEntity entity);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    Task SaveChangesAsync();
 }
