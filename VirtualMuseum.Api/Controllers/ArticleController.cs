@@ -28,6 +28,7 @@ public class ArticleController : ControllerBase
         return BadRequest(response);
     }
 
+    [HttpGet("{id}")]
     public async Task<ActionResult<CollectionResult<ArticleDto>>> GetArticleById(int id)
     {
         var response = await _articleService.GetArticleByIdAsync(id);

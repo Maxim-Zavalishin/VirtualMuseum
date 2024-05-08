@@ -1,4 +1,3 @@
-using System.Net.WebSockets;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using VirtualMuseum.Application.Resources;
@@ -79,35 +78,34 @@ public class ArticleServices : IArticleService
     {
         try
         {
-            var article = await _articleRepository
-                .GetAll()
-                .FirstOrDefaultAsync(article => article.Id == id);
-
-            var articleDto = new ArticleDto(
-                article.Name,
-                article.Text,
-                article.Keywords,
-                article.SubTopic.Name,
-                article.AuthorArticles
-                    .Where(authorArticle => authorArticle.Author != null)
-                    .Select(authorArticle => new AuthorNameDto(
-                        authorArticle.Author.Id,
-                        authorArticle.Author.Firstname,
-                        authorArticle.Author.Lastname
-                    )).ToList(),
-                article.Feedbacks
-                    .Where(feedback => feedback != null)
-                    .Where(feedback => feedback.User != null)
-                    .Select(feedback => new FeedbackDto(
-                        feedback.Text,
-                        feedback.CreatedAt,
-                        new UserFeedbackDto(
-                            feedback.User.Firstname,
-                            feedback.User.Lastname,
-                            feedback.User.Login
-                        )
-                    )).ToList()
-            );
+            var articleDto = await _articleRepository.GetAll()
+                .Where(article => article.Id == id)
+                .Select(article => new ArticleDto(
+                    article.Name,
+                    article.Text,
+                    article.Keywords,
+                    article.SubTopic.Name, // Предполагается, что у вас есть навигационное свойство SubTopic
+                    article.AuthorArticles
+                        .Where(authorArticle => authorArticle.Author != null)
+                        .Select(authorArticle => new AuthorNameDto(
+                            authorArticle.Author.Id,
+                            authorArticle.Author.Firstname,
+                            authorArticle.Author.Lastname
+                        )).ToList(),
+                    article.Feedbacks
+                        .Where(feedback => feedback != null)
+                        .Where(feedback => feedback.User != null)
+                        .Select(feedback => new FeedbackDto(
+                            feedback.Text,
+                            feedback.CreatedAt,
+                            new UserFeedbackDto(
+                                feedback.User.Firstname,
+                                feedback.User.Lastname,
+                                feedback.User.Login
+                            )
+                        )).ToList()
+                ))
+                .FirstOrDefaultAsync();
 
             return new BaseResult<ArticleDto>()
             {

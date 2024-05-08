@@ -6,4 +6,4 @@ public record FeedbackDto(
     string Text,
     DateTime CreatedAt,
     UserFeedbackDto User
-    );
+);
