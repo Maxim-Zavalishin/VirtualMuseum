@@ -18,16 +18,18 @@ public class ArticleServices : IArticleService
     private readonly IBaseRepository<Article> _articleRepository;
     private readonly IBaseRepository<AuthorArticle> _authorArticleRepository;
     private readonly IBaseRepository<Author> _authorRepository;
+    private readonly IBaseRepository<SubTopic> _subTopic;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public ArticleServices(IBaseRepository<Article> articleRepository, IBaseRepository<AuthorArticle> authorArticleRepository, IMapper mapper, IBaseRepository<Author> authorRepository, IUnitOfWork unitOfWork)
+    public ArticleServices(IBaseRepository<Article> articleRepository, IBaseRepository<AuthorArticle> authorArticleRepository, IMapper mapper, IBaseRepository<Author> authorRepository, IUnitOfWork unitOfWork, IBaseRepository<SubTopic> subTopic)
     {
         _articleRepository = articleRepository;
         _authorArticleRepository = authorArticleRepository;
         _mapper = mapper;
         _authorRepository = authorRepository;
         _unitOfWork = unitOfWork;
+        _subTopic = subTopic;
     }
     
     public async Task<CollectionResult<GetArticleDto>> GetIdArticlesAsync()
@@ -37,6 +39,7 @@ public class ArticleServices : IArticleService
             var articles = await _articleRepository
                 .GetAll()
                 .Select(article => new GetArticleDto(
+                    article.Id,
                     article.Name,
                     article.Keywords,
                     article.AuthorArticles
@@ -81,10 +84,11 @@ public class ArticleServices : IArticleService
             var articleDto = await _articleRepository.GetAll()
                 .Where(article => article.Id == id)
                 .Select(article => new ArticleDto(
+                    article.Id,
                     article.Name,
                     article.Text,
                     article.Keywords,
-                    article.SubTopic.Name, // Предполагается, что у вас есть навигационное свойство SubTopic
+                    article.SubTopic.Name,
                     article.AuthorArticles
                         .Where(authorArticle => authorArticle.Author != null)
                         .Select(authorArticle => new AuthorNameDto(
@@ -123,9 +127,66 @@ public class ArticleServices : IArticleService
         }
     }
 
-    public Task<BaseResult<ArticleDto>> CreateArticleAsync(CreateArticleDto dto)
+    public async Task<BaseResult<bool>> CreateArticleAsync(CreateArticleDto dto)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var article = await _articleRepository.GetAll()
+                .FirstOrDefaultAsync(x => x.Name == dto.Name);
+
+            if (article != null)
+            {
+                return new BaseResult<bool>()
+                {
+                    ErrorCode = (int)ErrorCode.ArticleAlreadyExists,
+                    ErrorMassage = ErrorMessage.ArticleAlreadyExists
+                };
+            } 
+            article = _mapper.Map<Article>(dto);
+
+            var subTopic = await _subTopic
+                .GetAll()
+                .FirstOrDefaultAsync(x => x.Name == dto.SubTopic);
+
+            if (subTopic == null)
+            {
+                return new BaseResult<bool>()
+                {
+                    ErrorCode = (int)ErrorCode.SubToticNotFount,
+                    ErrorMassage = ErrorMessage.SubToticNotFount
+                };
+            }
+            
+            article.SubTopicId = subTopic.Id;
+
+            var createdArticle = await _articleRepository.CreateAsync(article);
+            await _authorRepository.SaveChangesAsync();
+
+            article = await _articleRepository.GetAll().FirstOrDefaultAsync(x => x.Name == article.Name);
+            
+            foreach (var author in dto.Authors)
+            {
+                await _authorArticleRepository.CreateAsync(new AuthorArticle()
+                {
+                    ArticleId = article.Id,
+                    AuthorId = author.Id
+                });
+                await _authorArticleRepository.SaveChangesAsync();
+            }
+
+            return new BaseResult<bool>()
+            {
+            };
+
+        }
+        catch (Exception e)
+        {
+            return new BaseResult<bool>()
+            {
+                ErrorCode = (int)ErrorCode.InternalServerError,
+                ErrorMassage = ErrorMessage.InternalServerError
+            };
+        }
     }
 
     public Task<BaseResult<ArticleDto>> DeleteArticleAsync(int id)

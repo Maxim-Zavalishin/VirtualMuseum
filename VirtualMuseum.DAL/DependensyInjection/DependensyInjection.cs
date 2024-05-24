@@ -9,6 +9,11 @@ namespace VirtualMuseum.DAL.DependensyInjection;
 
 public static class DependensyInjection
 {
+    /// <summary>
+    /// Подключение базы данных.
+    /// </summary>
+    /// <param name="services"></param>
+    /// <param name="configuration"></param>
     public static void AddDataAccessLayer(this IServiceCollection? services, IConfiguration configuration)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
@@ -19,6 +24,10 @@ public static class DependensyInjection
         services.InitRepositories();
     }
 
+    /// <summary>
+    /// Регистрация репозиториев.
+    /// </summary>
+    /// <param name="services"></param>
     public static void InitRepositories(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();

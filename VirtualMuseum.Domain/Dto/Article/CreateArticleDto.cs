@@ -1,3 +1,5 @@
+using VirtualMuseum.Domain.Dto.Author;
+
 namespace VirtualMuseum.Domain.Dto.Article;
 
 public record CreateArticleDto(
@@ -5,5 +7,5 @@ public record CreateArticleDto(
     string Text,
     string Keywords,
     string SubTopic,
-    List<string> Authors
+    List<AuthorNameDto> Authors
     );

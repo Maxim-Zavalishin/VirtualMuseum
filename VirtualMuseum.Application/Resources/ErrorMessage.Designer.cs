@@ -60,6 +60,15 @@ namespace VirtualMuseum.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Статья уже существует.
+        /// </summary>
+        internal static string ArticleAlreadyExists {
+            get {
+                return ResourceManager.GetString("ArticleAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Статья не найдена.
         /// </summary>
         internal static string ArticleNotFount {
@@ -78,7 +87,7 @@ namespace VirtualMuseum.Application.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to внутрянняя ошибка сервера.
+        ///   Looks up a localized string similar to Внутрянняя ошибка сервера.
         /// </summary>
         internal static string InternalServerError {
             get {
@@ -110,6 +119,15 @@ namespace VirtualMuseum.Application.Resources {
         internal static string InvalidToken {
             get {
                 return ResourceManager.GetString("InvalidToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подтема не найдена.
+        /// </summary>
+        internal static string SubToticNotFount {
+            get {
+                return ResourceManager.GetString("SubToticNotFount", resourceCulture);
             }
         }
         

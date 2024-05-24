@@ -23,7 +23,7 @@ public interface IArticleService
     /// </summary>
     /// <param name="dto"> Создаваемая статья. </param>
     /// <returns> Создаваемая статья. </returns>
-    Task<BaseResult<ArticleDto>> CreateArticleAsync(CreateArticleDto dto);
+    Task<BaseResult<bool>> CreateArticleAsync(CreateArticleDto dto);
 
     /// <summary>
     /// Удаление статьи по id.

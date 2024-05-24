@@ -16,7 +16,10 @@ public class ArticleController : ControllerBase
         _articleService = articleService;
     }
     
-    
+    /// <summary>
+    /// Получение списка всех статей без текста.
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public async Task<ActionResult<CollectionResult<GetArticleDto>>> GetArticle()
     {
@@ -28,6 +31,11 @@ public class ArticleController : ControllerBase
         return BadRequest(response);
     }
 
+    /// <summary>
+    /// Получение конкретной статьи по Id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<CollectionResult<ArticleDto>>> GetArticleById(int id)
     {

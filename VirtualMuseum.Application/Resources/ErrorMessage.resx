@@ -19,7 +19,7 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="InternalServerError" xml:space="preserve">
-        <value>внутрянняя ошибка сервера</value>
+        <value>Внутрянняя ошибка сервера</value>
     </data>
     <data name="InvalidClientRequest" xml:space="preserve">
         <value>Невалидный запрос клиента</value>
@@ -41,5 +41,11 @@
     </data>
     <data name="AutorNotFount" xml:space="preserve">
         <value>Автор не найден</value>
+    </data>
+    <data name="ArticleAlreadyExists" xml:space="preserve">
+        <value>Статья уже существует</value>
+    </data>
+    <data name="SubToticNotFount" xml:space="preserve">
+        <value>Подтема не найдена</value>
     </data>
 </root>

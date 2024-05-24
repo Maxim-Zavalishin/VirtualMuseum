@@ -35,4 +35,10 @@
     <data name="AutorNotFount" xml:space="preserve">
         <value>Autor not fount</value>
     </data>
+    <data name="ArticleAlreadyExists" xml:space="preserve">
+        <value>Article already exists</value>
+    </data>
+    <data name="SubToticNotFount" xml:space="preserve">
+        <value>SubTotic not fount</value>
+    </data>
 </root>
