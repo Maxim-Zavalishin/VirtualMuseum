@@ -11,9 +11,9 @@ public class ArticleConfiguration : IEntityTypeConfiguration<Article>
     {
         builder.HasKey(a => a.Id);
         builder.Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Property(a => a.Name).IsRequired().HasColumnType("varchar(200)");
-        builder.Property(a => a.Text).IsRequired().HasColumnType("varchar(5000)");
-        builder.Property(a => a.Keywords).IsRequired().HasColumnType("varchar(200)");
+        builder.Property(a => a.Name).IsRequired().HasColumnType("nvarchar(200)");
+        builder.Property(a => a.Text).IsRequired().HasColumnType("nvarchar(5000)");
+        builder.Property(a => a.Keywords).IsRequired().HasColumnType("nvarchar(200)");
 
         builder.HasMany<Feedback>(a => a.Feedbacks)
             .WithOne(f => f.Article)

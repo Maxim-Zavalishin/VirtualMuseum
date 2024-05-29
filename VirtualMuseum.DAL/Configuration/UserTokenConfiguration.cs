@@ -10,7 +10,7 @@ public class UserTokenConfiguration : IEntityTypeConfiguration<UserToken>
     {
         builder.HasKey(u => u.Id);
         builder.Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Property(u => u.RefreshToken).IsRequired().HasColumnType("varchar(255)");
+        builder.Property(u => u.RefreshToken).IsRequired().HasColumnType("nvarchar(255)");
         builder.Property(u => u.RefreshTokenExpiryTime).IsRequired().HasColumnType("datetime");
 
         builder.HasOne(ut => ut.User)

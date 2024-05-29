@@ -10,9 +10,9 @@ public class AuthorConfiguration : IEntityTypeConfiguration<Author>
     {
         builder.HasKey(a => a.Id);
         builder.Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Property(a => a.Firstname).IsRequired().HasColumnType("varchar(100)");
-        builder.Property(a => a.Secondname).HasColumnType("varchar(100)");
-        builder.Property(a => a.Lastname).IsRequired().HasColumnType("varchar(200)");
+        builder.Property(a => a.Firstname).IsRequired().HasColumnType("nvarchar(100)");
+        builder.Property(a => a.Secondname).HasColumnType("nvarchar(100)");
+        builder.Property(a => a.Lastname).IsRequired().HasColumnType("nvarchar(200)");
 
         builder.HasMany<AuthorArticle>(a => a.AuthorArticles)
             .WithOne(a => a.Author)

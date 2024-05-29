@@ -10,7 +10,7 @@ public class FeedbackConfiguration : IEntityTypeConfiguration<Feedback>
     {
         builder.HasKey(f => f.Id);
         builder.Property(f => f.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Property(f => f.Text).IsRequired().HasColumnType("varchar(300)");
+        builder.Property(f => f.Text).IsRequired().HasColumnType("nvarchar(300)");
         builder.Property(f => f.CreatedAt).IsRequired().HasColumnType("datetime");
 
         builder.HasOne<Article>(f => f.Article)

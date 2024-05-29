@@ -7,5 +7,5 @@ public record CreateArticleDto(
     string Text,
     string Keywords,
     string SubTopic,
-    List<AuthorNameDto> Authors
+    List<int> AuthorsId
     );

@@ -10,8 +10,8 @@ public class SubTopicConfiguration : IEntityTypeConfiguration<SubTopic>
     {
         builder.HasKey(s => s.Id);
         builder.Property(s => s.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Property(s => s.Name).IsRequired().HasColumnType("varchar(200)");
-        builder.Property(s => s.Description).IsRequired().HasColumnType("varchar(500)");
+        builder.Property(s => s.Name).IsRequired().HasColumnType("nvarchar(200)");
+        builder.Property(s => s.Description).IsRequired().HasColumnType("nvarchar(500)");
 
         builder.HasMany<Article>(s => s.Articles)
             .WithOne(a => a.SubTopic)

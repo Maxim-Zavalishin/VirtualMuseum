@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using VirtualMuseum.Domain.Dto.Article;
 using VirtualMuseum.Domain.Interfaces.Services;
@@ -45,6 +46,20 @@ public class ArticleController : ControllerBase
         {
             return Ok(response);
         }
+        
         return BadRequest(response);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<BaseResult<bool>>> CreateArticle([FromBody]CreateArticleDto dto)
+    {
+        var response = await _articleService.CreateArticleAsync(dto);
+
+        if (response.IsSuccess)
+        {
+            return Ok(response.Data);
+        }
+
+        return BadRequest(response.Data);
     }
 }

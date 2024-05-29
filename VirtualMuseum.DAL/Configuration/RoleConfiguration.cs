@@ -10,7 +10,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
         builder.HasKey(r => r.Id);
         builder.Property(r => r.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Property(r => r.Name).IsRequired().HasColumnType("varchar(100)");
+        builder.Property(r => r.Name).IsRequired().HasColumnType("nvarchar(100)");
 
         builder.HasMany<User>(r => r.Users)
             .WithOne(u => u.Role)

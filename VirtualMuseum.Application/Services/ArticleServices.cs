@@ -142,7 +142,12 @@ public class ArticleServices : IArticleService
                     ErrorMassage = ErrorMessage.ArticleAlreadyExists
                 };
             } 
-            article = _mapper.Map<Article>(dto);
+            article = new Article()
+            {
+                Keywords = dto.Keywords,
+                Name = dto.Name,
+                Text = dto.Text
+            };
 
             var subTopic = await _subTopic
                 .GetAll()
@@ -164,12 +169,12 @@ public class ArticleServices : IArticleService
 
             article = await _articleRepository.GetAll().FirstOrDefaultAsync(x => x.Name == article.Name);
             
-            foreach (var author in dto.Authors)
+            foreach (var id in dto.AuthorsId)
             {
                 await _authorArticleRepository.CreateAsync(new AuthorArticle()
                 {
                     ArticleId = article.Id,
-                    AuthorId = author.Id
+                    AuthorId = id
                 });
                 await _authorArticleRepository.SaveChangesAsync();
             }
@@ -181,6 +186,7 @@ public class ArticleServices : IArticleService
         }
         catch (Exception e)
         {
+            Console.WriteLine(e.Message);
             return new BaseResult<bool>()
             {
                 ErrorCode = (int)ErrorCode.InternalServerError,
