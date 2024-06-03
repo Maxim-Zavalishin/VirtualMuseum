@@ -30,7 +30,7 @@ public interface IArticleService
     /// </summary>
     /// <param name="id"> id удаляемой статьи. </param>
     /// <returns> Удаляемая статья. </returns>
-    Task<BaseResult<ArticleDto>> DeleteArticleAsync(int id);
+    Task<BaseResult<bool>> DeleteArticleAsync(int id);
 
     /// <summary>
     /// Обновление данных конкретной статьи.

@@ -55,11 +55,24 @@ public class ArticleController : ControllerBase
     {
         var response = await _articleService.CreateArticleAsync(dto);
 
-        if (response.IsSuccess)
+        if(response.IsSuccess)
         {
-            return Ok(response.Data);
+            return Ok(response);
         }
 
-        return BadRequest(response.Data);
+        return BadRequest(response);
+    }
+
+    [HttpDelete]
+    public async Task<ActionResult<BaseResult<ArticleDto>>> DeleteArticle(int id)
+    {
+        var response = await _articleService.DeleteArticleAsync(id);
+
+        if (response.IsSuccess)
+        {
+            return Ok(response);
+        }
+
+        return BadRequest(response);
     }
 }

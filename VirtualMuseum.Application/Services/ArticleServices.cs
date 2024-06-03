@@ -195,9 +195,43 @@ public class ArticleServices : IArticleService
         }
     }
 
-    public Task<BaseResult<ArticleDto>> DeleteArticleAsync(int id)
+    public async Task<BaseResult<bool>> DeleteArticleAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            
+            var article = await _articleRepository
+                .GetAll()
+                .Include(x => x.AuthorArticles)
+                .Include(x => x.Feedbacks)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (article == null)
+            {
+                return new BaseResult<bool>()
+                {
+                    ErrorMassage = ErrorMessage.ArticleNotFount
+                };
+            }
+
+            _articleRepository.Remove(article);
+            await _articleRepository.SaveChangesAsync();
+
+            return new BaseResult<bool>()
+            {
+                Data = true
+            };
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+            return new BaseResult<bool>()
+            {
+                ErrorCode = (int)ErrorCode.InternalServerError,
+                ErrorMassage = ErrorMessage.InternalServerError
+            };
+        }
     }
 
     public Task<BaseResult<ArticleDto>> UpdateArticleAsync(ArticleDto dto)

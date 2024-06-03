@@ -87,6 +87,15 @@ namespace VirtualMuseum.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отзыв не найден.
+        /// </summary>
+        internal static string FeedbackNotFound {
+            get {
+                return ResourceManager.GetString("FeedbackNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Внутрянняя ошибка сервера.
         /// </summary>
         internal static string InternalServerError {

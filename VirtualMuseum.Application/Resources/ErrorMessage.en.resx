@@ -41,4 +41,7 @@
     <data name="SubToticNotFount" xml:space="preserve">
         <value>SubTotic not fount</value>
     </data>
+    <data name="FeedbackNotFound" xml:space="preserve">
+        <value>Feedback not found</value>
+    </data>
 </root>

@@ -12,18 +12,20 @@ public class ArticleConfiguration : IEntityTypeConfiguration<Article>
         builder.HasKey(a => a.Id);
         builder.Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Property(a => a.Name).IsRequired().HasColumnType("nvarchar(200)");
-        builder.Property(a => a.Text).IsRequired().HasColumnType("nvarchar(5000)");
+        builder.Property(a => a.Text).IsRequired().HasColumnType("nvarchar(4000)");
         builder.Property(a => a.Keywords).IsRequired().HasColumnType("nvarchar(200)");
 
         builder.HasMany<Feedback>(a => a.Feedbacks)
             .WithOne(f => f.Article)
             .HasForeignKey(a => a.ArticleId)
-            .HasPrincipalKey(a => a.Id);
+            .HasPrincipalKey(a => a.Id)
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany<AuthorArticle>(a => a.AuthorArticles)
             .WithOne(a => a.Article)
             .HasForeignKey(a => a.ArticleId)
-            .HasPrincipalKey(a => a.Id);
+            .HasPrincipalKey(a => a.Id)
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne<SubTopic>(a => a.SubTopic)
             .WithMany(s => s.Articles)
