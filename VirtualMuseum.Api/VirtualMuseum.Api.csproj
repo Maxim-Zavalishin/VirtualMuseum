@@ -14,8 +14,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VirtualMuseum.Application\VirtualMuseum.Application.csproj" />
+    <ProjectReference Include="..\VirtualMuseum.Aplication\VirtualMuseum.Aplication.csproj" />
     <ProjectReference Include="..\VirtualMuseum.DAL\VirtualMuseum.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\SubTopicController.cs" />
+    <Compile Remove="Controllers\PositionController.cs" />
+    <Compile Remove="Controllers\FeedbackController.cs" />
+    <Compile Remove="Controllers\RoleController.cs" />
   </ItemGroup>
 
 </Project>

@@ -18,7 +18,7 @@ public class UserToken : IBaseEntity<int>
     /// <summary>
     /// Время жизни токена.
     /// </summary>
-    public DateTime RefreshTokenExpiryTime { get; set; }
+    public DateTime ExpiryTime { get; set; }
 
     /// <summary>
     /// Пользователь.

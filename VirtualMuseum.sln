@@ -5,17 +5,17 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{19BDDF8A-A9DE-4A64-967F-4B40CBCB0179}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMuseum.Api", "VirtualMuseum.Api\VirtualMuseum.Api.csproj", "{FC35E0CA-5C05-4A10-A446-BDEEA51B07E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMuseum.Api", "VirtualMuseum.Api\VirtualMuseum.Api.csproj", "{FC35E0CA-5C05-4A10-A446-BDEEA51B07E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1EDDF0DB-FCD3-4058-A12C-76B1071BCBFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMuseum.DAL", "VirtualMuseum.DAL\VirtualMuseum.DAL.csproj", "{2DEFA2B8-1824-4950-AFF1-670F9CC7EB4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMuseum.DAL", "VirtualMuseum.DAL\VirtualMuseum.DAL.csproj", "{2DEFA2B8-1824-4950-AFF1-670F9CC7EB4A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4208EA43-3240-452B-953D-883EA4DE491C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMuseum.Domain", "VirtualMuseum.Domain\VirtualMuseum.Domain.csproj", "{23D307EA-FA7F-44B1-9BAF-1602F8964F5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMuseum.Domain", "VirtualMuseum.Domain\VirtualMuseum.Domain.csproj", "{23D307EA-FA7F-44B1-9BAF-1602F8964F5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMuseum.Application", "VirtualMuseum.Application\VirtualMuseum.Application.csproj", "{246898F3-CA46-4371-AA3B-7425B590B901}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMuseum.Aplication", "VirtualMuseum.Aplication\VirtualMuseum.Aplication.csproj", "{246898F3-CA46-4371-AA3B-7425B590B901}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
