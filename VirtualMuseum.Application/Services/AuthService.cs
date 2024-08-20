@@ -82,8 +82,8 @@ public class AuthService : IAuthService
         {
             return new BaseResult<TokenDto>()
             {
-                ErrorMassage = ErrorMessage.UserNotFount,
-                ErrorCode = (int)ErrorCode.UserNotFount
+                ErrorMassage = ErrorMessage.UserNotFound,
+                ErrorCode = (int)ErrorCode.UserNotFound
             };
         }
         
@@ -117,14 +117,14 @@ public class AuthService : IAuthService
             {
                 UserId = user.Id,
                 RefreshToken = refreshToken,
-                RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7)
+                ExpiryTime = DateTime.UtcNow.AddDays(7)
             };
             await _userTokenRepository.CreateAsync(userToken);
         }
         else
         {
             userToken.RefreshToken = refreshToken;
-            userToken.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+            userToken.ExpiryTime = DateTime.UtcNow.AddDays(7);
         }
 
         return new BaseResult<TokenDto>()

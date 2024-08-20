@@ -13,7 +13,7 @@ using VirtualMuseum.Domain.Result;
 
 namespace VirtualMuseum.Application.Services;
 
-public class ArticleServices : IArticleService
+public class ArticleService : IArticleService
 {
     private readonly IBaseRepository<Article> _articleRepository;
     private readonly IBaseRepository<AuthorArticle> _authorArticleRepository;
@@ -22,7 +22,7 @@ public class ArticleServices : IArticleService
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public ArticleServices(IBaseRepository<Article> articleRepository, IBaseRepository<AuthorArticle> authorArticleRepository, IMapper mapper, IBaseRepository<Author> authorRepository, IUnitOfWork unitOfWork, IBaseRepository<SubTopic> subTopic)
+    public ArticleService(IBaseRepository<Article> articleRepository, IBaseRepository<AuthorArticle> authorArticleRepository, IMapper mapper, IBaseRepository<Author> authorRepository, IUnitOfWork unitOfWork, IBaseRepository<SubTopic> subTopic)
     {
         _articleRepository = articleRepository;
         _authorArticleRepository = authorArticleRepository;
@@ -57,8 +57,8 @@ public class ArticleServices : IArticleService
             {
                 return new CollectionResult<GetArticleDto>()
                 {
-                    ErrorMassage = ErrorMessage.ArticleNotFount,
-                    ErrorCode = (int)ErrorCode.ArticleNotFount
+                    ErrorMassage = ErrorMessage.ArticleNotFound,
+                    ErrorCode = (int)ErrorCode.ArticleNotFound
                 };
             }
 
@@ -157,8 +157,8 @@ public class ArticleServices : IArticleService
             {
                 return new BaseResult<bool>()
                 {
-                    ErrorCode = (int)ErrorCode.SubToticNotFount,
-                    ErrorMassage = ErrorMessage.SubToticNotFount
+                    ErrorCode = (int)ErrorCode.SubToticNotFound,
+                    ErrorMassage = ErrorMessage.SubToticNotFound
                 };
             }
             
@@ -210,7 +210,7 @@ public class ArticleServices : IArticleService
             {
                 return new BaseResult<bool>()
                 {
-                    ErrorMassage = ErrorMessage.ArticleNotFount
+                    ErrorMassage = ErrorMessage.ArticleNotFound
                 };
             }
 

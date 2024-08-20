@@ -19,18 +19,16 @@ namespace VirtualMuseum.Application.Services;
 public class TokenService : ITokenService
 {
     private readonly IBaseRepository<User> _userRepository;
-    // private readonly ILogger _logger;
     private readonly string _jwtKey;
     private readonly string _issuer;
-    private readonly string _audiece;
+    private readonly string _audience;
 
-    public TokenService(IOptions<JwtSettings> options, IBaseRepository<User> userRepository/*, ILogger logger*/)
+    public TokenService(IOptions<JwtSettings> options, IBaseRepository<User> userRepository)
     {
         _userRepository = userRepository;
-        // _logger = logger;
         _jwtKey = options.Value.JwtKey;
         _issuer = options.Value.Issuer;
-        _audiece = options.Value.Audience;
+        _audience = options.Value.Audience;
     }
 
     /// <inheritdoc />
@@ -40,7 +38,7 @@ public class TokenService : ITokenService
         var creadentialns = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
         var securityToken = new JwtSecurityToken(
             _issuer,
-            _audiece,
+            _audience,
             claims,
             null,
             DateTime.UtcNow.AddMinutes(10),
@@ -98,7 +96,7 @@ public class TokenService : ITokenService
                 .FirstOrDefaultAsync(x => x.Login == actorName);
 
             if (user == null || user.UserToken.RefreshToken != dto.RefreshToken ||
-                user.UserToken.RefreshTokenExpiryTime < DateTime.Now)
+                user.UserToken.ExpiryTime < DateTime.Now)
             {
                 // _logger.Warning(ErrorMessage.InvalidClientRequest, user);
                 return new BaseResult<TokenDto>()

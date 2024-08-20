@@ -12,7 +12,7 @@ public class ArticleConfiguration : IEntityTypeConfiguration<Article>
         builder.HasKey(a => a.Id);
         builder.Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Property(a => a.Name).IsRequired().HasColumnType("nvarchar(200)");
-        builder.Property(a => a.Text).IsRequired().HasColumnType("nvarchar(4000)");
+        builder.Property(a => a.Text).IsRequired().HasColumnType("ntext");
         builder.Property(a => a.Keywords).IsRequired().HasColumnType("nvarchar(200)");
 
         builder.HasMany<Feedback>(a => a.Feedbacks)
@@ -31,5 +31,15 @@ public class ArticleConfiguration : IEntityTypeConfiguration<Article>
             .WithMany(s => s.Articles)
             .HasPrincipalKey(s => s.Id)
             .HasForeignKey(a => a.SubTopicId);
+
+        
+        // Тестовая Запись
+        builder.HasData(new Article()
+        {
+            Id = 1,
+            Name = "string",
+            Keywords = "string",
+            Text = "string"
+        });
     }
 }

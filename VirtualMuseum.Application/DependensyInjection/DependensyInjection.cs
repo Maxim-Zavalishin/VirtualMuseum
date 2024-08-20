@@ -16,15 +16,20 @@ public static class DependensyInjection
     }
     private static void AddMappers(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(UserMapper));
-        services.AddAutoMapper(typeof(UserRegisterMapper));
-        services.AddAutoMapper(typeof(GetArticleMapper));
+        services.AddAutoMapper(
+            typeof(UserMapper), 
+            typeof(UserRegisterMapper), 
+            typeof(GetArticleMapper)
+        );
     }
 
     private static void InitServices(this IServiceCollection services)
     {
         services.AddTransient<IAuthService, AuthService>();
         services.AddTransient<ITokenService, TokenService>();
-        services.AddTransient<IArticleService, ArticleServices>();
+        services.AddTransient<IArticleService, ArticleService>();
+        services.AddTransient<IAuthorService, AuthorService>();
+        services.AddTransient<IPositionService, PositionService>();
+
     }
 }

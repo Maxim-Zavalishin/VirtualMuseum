@@ -22,5 +22,15 @@ public class FeedbackConfiguration : IEntityTypeConfiguration<Feedback>
             .WithMany(u => u.Feedbacks)
             .HasPrincipalKey(u => u.Id)
             .HasForeignKey(a => a.UserId);
+
+        
+        //Тестовая запись
+        builder.HasData(new Feedback()
+        {
+            Id = 1,
+            Text = "string",
+            CreatedAt = DateTime.Now,
+            ArticleId = 1
+        });
     }
 }

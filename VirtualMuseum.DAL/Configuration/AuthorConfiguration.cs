@@ -23,5 +23,14 @@ public class AuthorConfiguration : IEntityTypeConfiguration<Author>
             .WithOne(p => p.Author)
             .HasPrincipalKey(a => a.Id)
             .HasForeignKey(p => p.AuthorId);
+
+        
+        // Тестовая запись
+        builder.HasData(new Author()
+        {
+            Id = 1,
+            Firstname = "string", 
+            Lastname = "string",
+        });
     }
 }

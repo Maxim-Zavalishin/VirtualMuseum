@@ -30,25 +30,28 @@
     <data name="UserAlreadyExists" xml:space="preserve">
         <value>Пользователь уже существует</value>
     </data>
-    <data name="UserNotFount" xml:space="preserve">
+    <data name="UserNotFound" xml:space="preserve">
         <value>Пользователь не найден</value>
     </data>
     <data name="InvalidPassword" xml:space="preserve">
         <value>Неверный пароль</value>
     </data>
-    <data name="ArticleNotFount" xml:space="preserve">
+    <data name="ArticleNotFound" xml:space="preserve">
         <value>Статья не найдена</value>
     </data>
-    <data name="AutorNotFount" xml:space="preserve">
+    <data name="AuthorNotFound" xml:space="preserve">
         <value>Автор не найден</value>
     </data>
     <data name="ArticleAlreadyExists" xml:space="preserve">
         <value>Статья уже существует</value>
     </data>
-    <data name="SubToticNotFount" xml:space="preserve">
+    <data name="SubToticNotFound" xml:space="preserve">
         <value>Подтема не найдена</value>
     </data>
     <data name="FeedbackNotFound" xml:space="preserve">
         <value>Отзыв не найден</value>
+    </data>
+    <data name="PositionNotFound" xml:space="preserve">
+        <value>Позиция не найдена</value>
     </data>
 </root>

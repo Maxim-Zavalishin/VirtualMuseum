@@ -9,20 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VirtualMuseum.Aplication\VirtualMuseum.Aplication.csproj" />
+    <ProjectReference Include="..\VirtualMuseum.Application\VirtualMuseum.Application.csproj" />
     <ProjectReference Include="..\VirtualMuseum.DAL\VirtualMuseum.DAL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Controllers\SubTopicController.cs" />
-    <Compile Remove="Controllers\PositionController.cs" />
-    <Compile Remove="Controllers\FeedbackController.cs" />
-    <Compile Remove="Controllers\RoleController.cs" />
   </ItemGroup>
 
 </Project>

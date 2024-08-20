@@ -71,18 +71,18 @@ namespace VirtualMuseum.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Статья не найдена.
         /// </summary>
-        internal static string ArticleNotFount {
+        internal static string ArticleNotFound {
             get {
-                return ResourceManager.GetString("ArticleNotFount", resourceCulture);
+                return ResourceManager.GetString("ArticleNotFound", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Автор не найден.
         /// </summary>
-        internal static string AutorNotFount {
+        internal static string AuthorNotFound {
             get {
-                return ResourceManager.GetString("AutorNotFount", resourceCulture);
+                return ResourceManager.GetString("AuthorNotFound", resourceCulture);
             }
         }
         
@@ -132,11 +132,20 @@ namespace VirtualMuseum.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Позиция не найдена.
+        /// </summary>
+        internal static string PositionNotFound {
+            get {
+                return ResourceManager.GetString("PositionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Подтема не найдена.
         /// </summary>
-        internal static string SubToticNotFount {
+        internal static string SubToticNotFound {
             get {
-                return ResourceManager.GetString("SubToticNotFount", resourceCulture);
+                return ResourceManager.GetString("SubToticNotFound", resourceCulture);
             }
         }
         
@@ -152,9 +161,9 @@ namespace VirtualMuseum.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Пользователь не найден.
         /// </summary>
-        internal static string UserNotFount {
+        internal static string UserNotFound {
             get {
-                return ResourceManager.GetString("UserNotFount", resourceCulture);
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
     }

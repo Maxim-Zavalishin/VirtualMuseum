@@ -23,25 +23,28 @@
     <data name="UserAlreadyExists" xml:space="preserve">
         <value>User already exists</value>
     </data>
-    <data name="UserNotFount" xml:space="preserve">
-        <value>User not fount</value>
-    </data>
     <data name="InvalidPassword" xml:space="preserve">
         <value>Invalid password</value>
-    </data>
-    <data name="ArticleNotFount" xml:space="preserve">
-        <value>Article not fount</value>
-    </data>
-    <data name="AutorNotFount" xml:space="preserve">
-        <value>Autor not fount</value>
     </data>
     <data name="ArticleAlreadyExists" xml:space="preserve">
         <value>Article already exists</value>
     </data>
-    <data name="SubToticNotFount" xml:space="preserve">
-        <value>SubTotic not fount</value>
-    </data>
     <data name="FeedbackNotFound" xml:space="preserve">
         <value>Feedback not found</value>
+    </data>
+    <data name="PositionNotFound" xml:space="preserve">
+        <value>Position not found</value>
+    </data>
+    <data name="ArticleNotFound" xml:space="preserve">
+        <value>Article not found</value>
+    </data>
+    <data name="AuthorNotFound" xml:space="preserve">
+        <value>Autor not found</value>
+    </data>
+    <data name="SubToticNotFound" xml:space="preserve">
+        <value>SubTopic not found</value>
+    </data>
+    <data name="UserNotFound" xml:space="preserve">
+        <value>User not found</value>
     </data>
 </root>
